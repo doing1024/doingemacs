@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "no-var-keyword": true,
+    "semicolon": true,
+    "no-implicit-dependencies": [true, "dev"]
+  }
+}

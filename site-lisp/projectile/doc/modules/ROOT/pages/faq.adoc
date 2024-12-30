@@ -1,0 +1,82 @@
+= Frequently Asked Questions
+
+== Why did you name it Projectile?
+
+I wanted a name that's not as boring as `project.el` and implies that your
+interaction with projects is going to speed up significantly. :-)
+
+NOTE: Funny enough, a few years after Projectile was created, another similar
+project called `project.el` was born. Despite its boring name it's a great
+project and happens to be part of Emacs.
+
+== How does Projectile compare to the built-in `project.el`?
+
+`project.el` was introduced in Emacs 25.1, released in 2016, and a lot of people
+have been asking since how do the two packages compare.
+
+Internally they have a lot of differences (e.g. different approach to project discovery and indexing), but from the user standpoint they are probably quite similar
+these days (circa 2021). Historically, Projectile had a lot more features, but many
+of them found their way into `project.el` over the years. If all you need is
+a way to quickly jump between project files or search/replace inside a project, you can't go wrong with both.
+
+For me Projectile's biggest advantage will always be that it's more community-friendly
+(e.g. the development happens on GitHub), and it's not restricted by the FSF
+contributor agreement, which means that everyone can easily contribute to the project. Of course, this comes with the downside that you have to install Projectile
+yourselves.
+
+One under-appreciated advantage of Projectile is that it has way more documentation.
+Okay, that's only an advantage if you're one of those rare people who enjoy reading it.
+
+NOTE: You can find a more detailed comparison xref:projectile_vs_project.adoc[here].
+
+== Does Projectile provide any integration with `project.el`?
+
+Starting with Projectile 2.7, Projectile will plug automatically its
+project discovery functions in `project.el`. You can find more
+information on the subject in the xref:usage.adoc["Usage"] section of
+the documentation.
+
+== Does Projectile work with TRAMP?
+
+Yeah, it does. I don't use TRAMP myself, however, so I never paid that
+much attention to the TRAMP support. It's mostly community-maintained.
+
+== Why doesn't Projectile have a default prefix for its keybinding?
+
+Historically Projectile used to use `C-c p` as the prefix for all of its commands.
+I opted for the `C-c p` prefix fully aware that this violates https://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Conventions.html[a very
+established Emacs
+convention],
+mostly because it felt practical and because pressing `C-c C-p` is not
+super convenient for many people.
+
+Eventually this was changed in Projectile 2.0. That's why currently Projectile
+requires users to select a prefix key for its commands explicitly.
+
+== What dependencies does Projectile have?
+
+Projectile will work without any external dependencies out of the box.
+However, if you have various tools installed, they will be
+automatically used when appropriate to improve performance.
+
+Inside version control repositories, VC tools are used when installed
+to list files more efficiently. The supported tools include git, hg,
+fossil, bzr, darcs, pijul, svn, sapling and jujutsu.
+
+Outside version control repositories, file search tools are used when
+installed for a faster search than pure Elisp. The supported tools
+include https://github.com/sharkdp/fd[fd] and GNU/BSD find.
+
+By default, if fd is installed, it is also used inside Git
+repositories as an alternative to `git ls-files`, because `git
+ls-files` has the limitation that it also lists deleted files until
+the deletions are staged, which can be confusing. You can eliminate
+the use of fd in this circumstance by setting `projectile-git-use-fd`
+to nil.
+
+== Do you need some help cleanup up all those tickets that have piled up?
+
+Certainly! In our https://github.com/bbatsov/projectile/issues/[issue
+tracker] we've got
+plenty of tickets marked with `Help Wanted` or `Good First Issue` that
+you can take a stab at, if you'd like to help out!

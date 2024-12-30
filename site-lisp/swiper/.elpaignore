@@ -1,0 +1,16 @@
+.github
+targets
+tests
+
+.mailmap
+CONTRIBUTING.org
+Makefile
+elpa.el
+ivy-test.el
+
+doc/Makefile
+doc/fdl-1.3.txt
+doc/gpl-3.0.txt
+doc/ivy.org
+doc/ivy-ox.el
+doc/scripts.el

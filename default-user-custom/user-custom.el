@@ -14,8 +14,6 @@
   (setq doingemacs-dashboard-logo "~/.emacs.d/logo.png")
   (setq doingemacs-dashboard-title "Doingemacs!")
   (setq doingemacs-enable-treemacs nil)
-  (setq doingemacs-enable-copilot t)
-  (setq doingemacs-enable-copilot-default nil)
   (setq doingemacs-enable-auto-save t)
   (setq doingemacs-enable-tab t)
   (setq doingemacs-enable-flycheck t)

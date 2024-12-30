@@ -1,0 +1,26 @@
+name: Sync EAF repos with mirror
+
+on:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron: '*/30 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: 'Syncing'
+        env:
+          EAF_MIRROR_USERNAME: ${{ secrets.EAF_MIRROR_USERNAME }}
+          EAF_MIRROR_PASSWORD: ${{ secrets.EAF_MIRROR_PASSWORD }}
+        run: python sync-eaf-resources.py --really-run

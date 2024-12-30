@@ -15,6 +15,5 @@
 (kb "M-d l r" 'lsp-rename)
 (kb "M-d l s" 'lsp-ivy-workspace-symbol)
 
-
 (provide 'config-lsp)
 ;;; config-lsp.el ends here

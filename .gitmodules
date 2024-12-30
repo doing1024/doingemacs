@@ -1,0 +1,66 @@
+[submodule "site-lisp/amx"]
+	path = site-lisp/amx
+	url = https://github.com/emacsmirror/amx.git
+[submodule "site-lisp/atom-one-dark-theme"]
+	path = site-lisp/atom-one-dark-theme
+	url = https://github.com/jonathanchu/atom-one-dark-theme.git
+[submodule "site-lisp/company-mode"]
+	path = site-lisp/company-mode
+	url = https://github.com/company-mode/company-mode.git
+[submodule "site-lisp/copilot.el"]
+	path = site-lisp/copilot.el
+	url = https://github.com/copilot-emacs/copilot.el.git
+[submodule "site-lisp/emacs-application-framework"]
+	path = site-lisp/emacs-application-framework
+	url = https://github.com/emacs-eaf/emacs-application-framework.git
+[submodule "site-lisp/emacs-dashboard"]
+	path = site-lisp/emacs-dashboard
+	url = https://github.com/emacs-dashboard/emacs-dashboard.git
+[submodule "site-lisp/emacs-which-key"]
+	path = site-lisp/emacs-which-key
+	url = https://github.com/justbur/emacs-which-key.git
+[submodule "site-lisp/flycheck"]
+	path = site-lisp/flycheck
+	url = https://github.com/flycheck/flycheck.git
+[submodule "site-lisp/goto-line-preview"]
+	path = site-lisp/goto-line-preview
+	url = https://github.com/emacs-vs/goto-line-preview.git
+[submodule "site-lisp/lsp-mode"]
+	path = site-lisp/lsp-mode
+	url = https://github.com/emacs-lsp/lsp-mode.git
+[submodule "site-lisp/lsp-ui"]
+	path = site-lisp/lsp-ui
+	url = https://github.com/emacs-lsp/lsp-ui.git
+[submodule "site-lisp/multiple-cursors.el"]
+	path = site-lisp/multiple-cursors.el
+	url = https://github.com/magnars/multiple-cursors.el
+[submodule "site-lisp/mwim.el"]
+	path = site-lisp/mwim.el
+	url = https://github.com/alezost/mwim.el.git
+[submodule "site-lisp/org-bullets"]
+	path = site-lisp/org-bullets
+	url = https://github.com/sabof/org-bullets.git
+[submodule "site-lisp/projectile"]
+	path = site-lisp/projectile
+	url = https://github.com/bbatsov/projectile.git
+[submodule "site-lisp/rainbow-delimiters"]
+	path = site-lisp/rainbow-delimiters
+	url = https://github.com/Fanael/rainbow-delimiters.git
+[submodule "site-lisp/sort-tab"]
+	path = site-lisp/sort-tab
+	url = https://github.com/manateelazycat/sort-tab.git
+[submodule "site-lisp/swiper"]
+	path = site-lisp/swiper
+	url = https://github.com/abo-abo/swiper.git
+[submodule "site-lisp/treemacs"]
+	path = site-lisp/treemacs
+	url = https://github.com/Alexander-Miller/treemacs.git
+[submodule "site-lisp/window-numbering.el"]
+	path = site-lisp/window-numbering.el
+	url = https://github.com/nschum/window-numbering.el.git
+[submodule "site-lisp/dash.el"]
+	path = site-lisp/dash.el
+	url = https://github.com/magnars/dash.el.git
+[submodule "site-lisp/f.el"]
+	path = site-lisp/f.el
+	url = https://github.com/rejeep/f.el.git

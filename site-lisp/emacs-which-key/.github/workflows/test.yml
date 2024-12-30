@@ -1,0 +1,31 @@
+name: which-key-test
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 0 1 * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        emacs_version:
+          - 26.1
+          - 26.2
+          - 26.3
+          - 27.1
+          - 27.2
+          - snapshot
+    steps:
+      - uses: purcell/setup-emacs@master
+        with:
+          version: ${{ matrix.emacs_version }}
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: 'git clone https://github.com/emacs-evil/evil'
+      - name: Run tests
+        run: 'emacs -Q -batch -L . -L ./evil -l which-key-tests.el -f ert-run-tests-batch-and-exit'

@@ -1,0 +1,4 @@
+*.elc
+/.cask/
+/performance-test/
+/Extensions.el

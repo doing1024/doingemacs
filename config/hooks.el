@@ -5,8 +5,6 @@
 (if doingemacs-enable-flycheck
     (add-hook 'prog-mode-hook #'flycheck-mode))
 
-(if doingemacs-enable-copilot-default
-    (add-hook 'lsp-mode-hook 'copilot-mode))
 (add-hook 'org-mode-hook #'org-bullets-mode)
 ;; LSP hooks
 (if doingemacs-enable-language-complete

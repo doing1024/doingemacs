@@ -1,0 +1,12 @@
+*.elc
+*.pyc
+/.log/
+app/
+app/*
+node_modules/
+dist/
+tags
+/.eaf-installed-apps.json
+compile_commands.json
+/reinput/reinput
+.cache/

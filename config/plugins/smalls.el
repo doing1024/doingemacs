@@ -13,13 +13,5 @@
 					      (kb "M-d m l" 'mc/edit-lines)
 					      (kb "M-d m w" 'mc/mark-all-like-this)
 					      (kb "C-S-<mouse-1>" 'mc/toggle-cursor-on-click)))
-(if doingemacs-enable-copilot
-    (progn (require 'copilot)
-	   (if doingemacs-enable-proxy
-	       (setq copilot-network-proxy '(:host doingemacs-proxy-host :port doingemacs-proxy-port)))
-	   (kb "M-d l c" 'copilot-mode)
-	   (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-	   (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
-	   ))
 (provide 'smalls)
 ;;; smalls.el ends here
