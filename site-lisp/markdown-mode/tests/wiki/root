@@ -1,0 +1,9 @@
+[[sub/foo]]
+
+[[sub/doesnotexist]]
+
+[[foo]]
+
+[[doesnotexist]]
+
+[[sub/bar.md]]

@@ -1,0 +1,94 @@
+# -*- fill-column: 100; eval: (auto-fill-mode t) -*-
+
+* Content                                                                            :TOC:noexport:
+- [[#pfuture][Pfuture]]
+   - [[#what-it-is][What it is]]
+   - [[#practical-examples][Practical examples]]
+      - [[#with-a-future-object][With a Future object]]
+      - [[#with-a-callback][With a Callback]]
+   - [[#about-asyncel][About async.el]]
+
+* Pfuture
+** What it is
+
+pfuture.el offers a set of simple functions wrapping Emacs' existing process creation capabilities.
+It allows to conveniently deal with external processes in an asynchronous manner without having to
+worry about stdout buffers and filter- & sentinel-functions.
+
+The following examples practically demonstrate its capabilities. Detailed and formal documentation
+can be found in each function's eldoc.
+
+** Practical examples
+
+Pfuture has 2 entry points.
+
+ - ~pfuture-new~ creates a ~future~ object that can be stored, passed around to other functions and
+   awaited to completion.
+ - ~pfuture-callback~ allows starting an external process in a fire-and-forget fashion, alongside
+   callbacks to execute when the process succeeds or fails, with full access to its output.
+
+*** With a Future object
+
+We can use pfuture to start an artficially long-running process (simulated with a sleep of 3
+seconds) twice and wait until both futures complete. Despite sleeping twice only 3 seconds will have
+passed since the processes run in parallel.
+
+#+BEGIN_SRC emacs-lisp
+  (let ((start   (float-time))
+        (future1 (pfuture-new "sleep" "3"))
+        (future2 (pfuture-new "sleep" "3"))
+        (future3 (pfuture-new "echo" "All futures have finished after %s seconds.")))
+    (pfuture-await future1 :timeout 4 :just-this-one nil)
+    (pfuture-await future2 :timeout 4 :just-this-one nil)
+    (pfuture-await future3 :timeout 4 :just-this-one nil)
+    (message (pfuture-result future3) (round (- (float-time) start))))
+#+END_SRC
+
+Stdout and stderr in future objects are separate:
+
+#+BEGIN_SRC emacs-lisp
+  (let ((future (pfuture-new "ls" "nonexsitent_file")))
+    (pfuture-await-to-finish future)
+    (message "Future stdout: [%s]" (string-trim (pfuture-result future)))
+    (message "Future stderr: [%s]" (string-trim (pfuture-stderr future))))
+#+END_SRC
+
+Calls to ~pfuture-await~ (and especially ~pfuture-await-to-finish~) are blocking, so it is important
+to set an appropriate timeout (default is 1 second) or to be really sure that the process is going
+to terminate.
+
+*** With a Callback
+
+Here we start another process and instead of keeping the future around and eventually awaiting it we
+can simply define what steps to take once the process has completed, depending on whether it failed
+or not.
+
+(Note that ~pfuture-callback~ requires lexical scope)
+
+#+BEGIN_SRC emacs-lisp
+  (defun showcase-error-callback (process status output)
+    (message "Pfuture Error!")
+    (message "Process: %s" process)
+    (message "Status: %s" status)
+    (message "Output: %s" output))
+
+  (let ((debug-callback (lambda (pfuture-process status _pfuture-buffer)
+                          (message "Pfuture Debug: Process [%s] changed sttaus to [%s]" pfuture-process status))))
+    (pfuture-callback ["ls" "-alh" "."]
+      :directory "~/Documents/git/pfuture"
+      :name "Pfuture Example"
+      :on-success (message "Pfuture Finish:\n%s" (pfuture-callback-output))
+      :on-error #'showcase-error-callback
+      :on-status-change debug-callback))
+#+END_SRC
+
+** About async.el
+
+You might be inclined to compare both packages since they both, at first glance, handle asynchronous
+processes, but in truth they have very little in common outside of their general asynchronous
+nature.
+
+Async.el allows you to start and handle an asynchronous Emacs instance, running Elisp code. Pfuture
+lets you start any external command like ~git~ or ~ls~ (as its mostly a wrapper around
+~make-process~), and then read its output. So while the two packages may appear similar at first
+there is really nothing to compare.
