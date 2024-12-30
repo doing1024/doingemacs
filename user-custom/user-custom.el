@@ -13,7 +13,7 @@
   (setq doingemacs-theme 'atom-one-dark)
   (setq doingemacs-dashboard-logo "~/.emacs.d/logo.png")
   (setq doingemacs-dashboard-title "Doingemacs!")
-  (setq doingemacs-enable-treemacs nil)
+  (setq doingemacs-enable-treemacs t)
   (setq doingemacs-enable-auto-save t)
   (setq doingemacs-enable-tab t)
   (setq doingemacs-enable-flycheck t)

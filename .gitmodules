@@ -64,3 +64,24 @@
 [submodule "site-lisp/f.el"]
 	path = site-lisp/f.el
 	url = https://github.com/rejeep/f.el.git
+[submodule "site-lisp/ht.el"]
+	path = site-lisp/ht.el
+	url = https://github.com/Wilfred/ht.el.git
+[submodule "site-lisp/lv"]
+	path = site-lisp/lv
+	url = https://github.com/emacs-straight/lv.git
+[submodule "site-lisp/markdown-mode"]
+	path = site-lisp/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode.git
+[submodule "site-lisp/spinner.el"]
+	path = site-lisp/spinner.el
+	url = https://github.com/Malabarba/spinner.el.git
+[submodule "site-lisp/pfuture"]
+	path = site-lisp/pfuture
+	url = https://github.com/Alexander-Miller/pfuture.git
+[submodule "site-lisp/format-all"]
+	path = site-lisp/format-all
+	url = https://github.com/lassik/emacs-format-all-the-code.git
+[submodule "site-lisp/yasnippet"]
+	path = site-lisp/yasnippet
+	url = https://github.com/joaotavora/yasnippet.git

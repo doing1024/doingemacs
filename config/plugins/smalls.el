@@ -3,7 +3,7 @@
 	   (kb "C-a" 'mwim-beginning-of-code-or-line)
 	   (kb "C-e" 'mwim-end-of-code-or-line)))
 
-(if doingemacs-enable-random-switch-theme-when-startup (load-theme (nth (random (length doingemacs-random-themes)) doingemacs-random-themes) t))
+(if doingemacs-enable-random-switch-theme-when-startup (load-theme (nth (random (length doingemacs-random-themes)) doingemacs-random-themes) t) (load-theme doingemacs-theme t))
 (require 'which-key)
 (which-key-mode)
 

@@ -5,6 +5,7 @@
 (setq lsp-keymap-prefix "C-c l"
       lsp-file-watch-threshold 500)
 (require 'lsp-mode)
+(require 'yasnippet)
 (setq lsp-headerline-breadcrumb-enable t)
 
 (require 'lsp-ui)
