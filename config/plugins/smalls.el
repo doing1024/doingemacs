@@ -19,7 +19,7 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 (use-package markdown-mode
   :load-path "site-lisp/markdown-mode"
-  :magic (".*\.md" . markdown-mode))
+  :magic ("*.md" . markdown-mode))
 
 (use-package goto-line-preview
   :load-path "site-lisp/goto-line-preview"
@@ -35,6 +35,5 @@
 (defun what-the-doingemacs-version-i-use ()
   (interactive)
   (message doingemacs-version))
-(message "temp")
 (provide 'smalls)
 ;;; smalls.el ends here
