@@ -91,11 +91,6 @@ Emacs 本身是不推荐也没有默认支持文件树的，但是出于对年�
 | C-S-tab   | 跳转到上一个标签    |
 | C-M-enter | 关闭当前buffer和tab |
 
-### 语法检查
-
-Doingemacs使用Flycheck提供代码语法检查，
-在代码文件中默认会开启语法检查，如果需要关闭此功能，请将`doingemacs-enable-flycheck`设为nil.
-
 ### 多光标
 为Doingemacs提供多光标支持。本功能不建议关闭。
 

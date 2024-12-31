@@ -1,6 +1,6 @@
 (require 'cl-lib)
 
-(defun add-subdirs-to-load-path (search-dir)
+(defun add-subdirs-to-load-path (search-dir add-theme)
   (interactive)
   (let* ((dir (file-name-as-directory search-dir)))
     (dolist (subdir
@@ -25,13 +25,12 @@
 
           ;; 注意： add-to-list 函数的第三个参数必须为 t ， 表示加到列表末尾
           ;; 这样 Emacs 会从父目录到子目录的顺序搜索 Elisp 插件， 顺序反过来会导致 Emacs 无法正常启动
-          (progn (add-to-list 'load-path subdir-path t)
-		 (add-to-list 'custom-theme-load-path subdir-path t)))
+          (if add-theme (add-to-list 'custom-theme-load-path subdir-path t)
+	    (add-to-list 'load-path subdir-path t)))
 
         ;; 继续递归搜索子目录
-        (add-subdirs-to-load-path subdir-path)))))
+        (add-subdirs-to-load-path subdir-path add-theme)))))
 
-(add-subdirs-to-load-path "~/.emacs.d/site-lisp/")
+; (add-subdirs-to-load-path "~/.emacs.d/site-lisp/" nil)
 (provide 'add-path)
 ;;; add-path.el ends here
-

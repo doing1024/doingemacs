@@ -1,4 +1,5 @@
 ;;; Codes:
+(add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-application-framework/")
 (require 'eaf)
 (defun doingemacs-install-new-eaf-apps ()
   (interactive)
