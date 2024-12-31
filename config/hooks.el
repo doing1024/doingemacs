@@ -9,9 +9,8 @@
 ;; LSP hooks
 (if doingemacs-enable-language-complete
     (progn (dolist (language-hook doingemacs-language-need-complete)
-	     (add-hook language-hook #'lsp-mode)
-	     )
-	   (add-hook 'lsp-mode #'lsp-enable-which-key-integration)))
+	     (add-hook language-hook 'eglot-ensure)
+	     )))
 					;(add-hook 'prog-mode-hook #'lsp)
 
 (provide 'hooks)
