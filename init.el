@@ -20,5 +20,6 @@
 (load custom-file)
 (user/run-after-init)
 (setq doingemacs-already-startup t)
+(setq doingemacs-version "doingemacs 0.0.3")
 (provide 'init)
 ;;; init.el ends here

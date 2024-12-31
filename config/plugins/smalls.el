@@ -14,5 +14,8 @@
 					      (kb "M-d m l" 'mc/edit-lines)
 					      (kb "M-d m w" 'mc/mark-all-like-this)
 					      (kb "C-S-<mouse-1>" 'mc/toggle-cursor-on-click)))
+(defun what-the-doingemacs-version-i-use ()
+  (interactive)
+  (message doingemacs-version))
 (provide 'smalls)
 ;;; smalls.el ends here
