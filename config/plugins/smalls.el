@@ -6,7 +6,7 @@
 (if doingemacs-enable-random-switch-theme-when-startup (load-theme (nth (random (length doingemacs-random-themes)) doingemacs-random-themes) t) (load-theme doingemacs-theme t))
 (require 'which-key)
 (which-key-mode)
-
+(require 'format-all)
 (require 'rainbow-delimiters)
 (require 'markdown-mode)
 (require 'goto-line-preview)
