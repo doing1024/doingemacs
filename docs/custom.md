@@ -117,7 +117,6 @@ Doingemacs使用Flycheck提供代码语法检查，
 #### 按键绑定
 `M-d l o`手动打开代码补全
 `M-d l r`重命名符号
-`M-d l s`在工作区中搜索符号
 
 ### EAF
 EAF是一个Emacs的插件，可以在Emacs中使用浏览器、PDF阅读器、视频播放器等功能。Doingemacs中内置对Eaf的支持，默认没有开启任何功能，请您自行开启。如果需要关闭Eaf，请将doingemacs-enable-eaf设为nil。

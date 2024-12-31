@@ -8,6 +8,7 @@
 (which-key-mode)
 
 (require 'rainbow-delimiters)
+(require 'markdown-mode)
 (require 'goto-line-preview)
 (if doingemacs-enable-multiple-cursors (progn (require 'multiple-cursors)
 					      (kb "M-d m l" 'mc/edit-lines)
