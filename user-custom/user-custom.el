@@ -31,6 +31,8 @@
   ;;; any thing you want it to run after load any doingemacs config
   ;;; warning: don't delete this function,it'll make error when doingemacs startup
 					; (message "Doingemacs Startup!")
+  (custom-set-variables '(gnus-select-method
+    (quote (nndiscourse "emacs-china.org" (nndiscourse-scheme "https")))))
   )
 
 (provide 'user-custom)
