@@ -1,0 +1,144 @@
+[[http://www.gnu.org/licenses/gpl-3.0.txt][file:https://img.shields.io/badge/license-GPL_3-orange.svg]]
+[[http://melpa.org/#/mwim][file:http://melpa.org/packages/mwim-badge.svg]]
+[[http://stable.melpa.org/#/mwim][file:http://stable.melpa.org/packages/mwim-badge.svg]]
+
+* About
+
+This Emacs package provides several commands to switch between various
+line positions, like moving to the beginning/end of code, line or
+comment.  It is inspired by [[http://www.emacswiki.org/emacs/BackToIndentationOrBeginning][this EmacsWiki page]] (some code from this
+page is used).  =mwim= stands for =Move Where I Mean=.
+
+[[file:demo.gif]]
+
+** Quick start
+
+If you don't have a wish to read all the text written below, just try
+the following key bindings and see what happens:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-a") 'mwim-beginning)
+(global-set-key (kbd "C-e") 'mwim-end)
+#+END_SRC
+
+* Installation
+
+** Automatic
+
+This package can be installed from [[http://melpa.org/][MELPA]] (with =M-x package-install= or
+=M-x list-packages=).
+
+** Manual
+
+For the manual installation, clone the repo, add the directory to
+=load-path= and add autoloads for the commands you need:
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "/path/to/mwim-dir")
+(autoload 'mwim "mwim" nil t)
+(autoload 'mwim-beginning "mwim" nil t)
+(autoload 'mwim-end "mwim" nil t)
+(autoload 'mwim-beginning-of-code-or-line "mwim" nil t)
+(autoload 'mwim-beginning-of-line-or-code "mwim" nil t)
+(autoload 'mwim-beginning-of-code-or-line-or-comment "mwim" nil t)
+(autoload 'mwim-end-of-code-or-line "mwim" nil t)
+(autoload 'mwim-end-of-line-or-code "mwim" nil t)
+#+END_SRC
+
+* Usage
+
+** Simple commands
+
+As you can see in the gif demonstration:
+
+- =M-x mwim-beginning-of-code-or-line= moves the point between a first
+  non-space character and a first character of the line.
+
+- =M-x mwim-end-of-code-or-line= moves the point between the end of code
+  (not counting a trailing comment) and the end of the line.
+
+=M-x mwim-beginning-of-line-or-code= and =M-x mwim-end-of-line-or-code=
+do the same but in a reverse order.
+
+Also there is =M-x mwim-beginning-of-code-or-line-or-comment= command
+that switches the point between these 3 positions.
+
+You may bind some keys to some of those commands in a usual manner, for
+example:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
+(global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)
+(global-set-key (kbd "<home>") 'mwim-beginning-of-line-or-code)
+(global-set-key (kbd "<end>") 'mwim-end-of-line-or-code)
+#+END_SRC
+
+Note that =shift-selection= is supported by all MWIM commands, which
+means if you press =Shift= with the bound keys (for example,
+=<S-home>=), the region of text will be selected (see [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Shift-Selection.html#Shift-Selection][Emacs manual]] for
+details).
+
+** Move where you really want
+
+Along with the described simple commands, there are more general
+commands that allow you to switch between any positions you want:
+
+- =M-x mwim-beginning=
+- =M-x mwim-end=
+- =M-x mwim=
+
+You can configure switching positions for these commands with
+=mwim-beginning-position-functions=, =mwim-end-position-functions= and
+=mwim-position-functions= variables.
+
+The position functions from these variables are called without arguments
+and they should return a new point position.  For example, after:
+
+#+BEGIN_SRC emacs-lisp
+(setq mwim-beginning-position-functions
+      (list (lambda () (+ 2 (line-beginning-position)))
+            'mwim-code-beginning))
+#+END_SRC
+
+=M-x mwim-beginning= will switch between the third character (the second
+counting from 0) on the current line and the code beginning position.
+
+You can also make mode-specific positions by making these variables
+local.  Let's say, for =emacs-lisp-mode=, you want a usual switch
+between the code end and line end when you call =M-x mwim-end=; but if
+there is a comment on the current line, you want to move to the
+beginning of this comment instead of the code end position.  You can do
+it like this:
+
+#+BEGIN_SRC emacs-lisp
+(defun my/comment-beginning-or-code-end ()
+  (or (mwim-line-comment-beginning)
+      (mwim-code-end)))
+
+(defun my/setup-elisp-mwim-positions ()
+  (setq-local mwim-end-position-functions
+              '(my/comment-beginning-or-code-end
+                mwim-line-end)))
+
+(add-hook 'emacs-lisp-mode-hook 'my/setup-elisp-mwim-positions)
+#+END_SRC
+
+So, if you want to use these commands instead of the Emacs defaults, you
+can bind them like this:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "<C-tab>") #'mwim)
+(global-set-key [remap move-beginning-of-line] #'mwim-beginning)
+(global-set-key [remap move-end-of-line] #'mwim-end)
+#+END_SRC
+
+** Define your own commands
+
+Finally, you can define your own commands using
+=mwim-move-to-next-position= macro.  See the code of =mwim=,
+=mwim-beginning= or =mwim-end= commands for examples.
+
+* Acknowledgments
+
+Many thanks to Adam Porter, who wrote [[https://github.com/alphapapa/mosey.el][mosey.el]] package, which provides
+similar facilities as =mwim.el=.  Several ideas were taken from it.

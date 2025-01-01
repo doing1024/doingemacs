@@ -1,0 +1,317 @@
+\input texinfo    @c -*- texinfo -*-
+@c %**start of header
+@setfilename dash.info
+@set DASHVER @c [[ dash-version ]]
+@settitle Dash: A modern list library for GNU Emacs.
+@documentencoding UTF-8
+@documentlanguage en
+@c %**end of header
+
+@copying
+This manual is for Dash version @value{DASHVER}.
+
+Copyright @copyright{} 2012--2024 Free Software Foundation, Inc.
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License,'' and no
+Front-Cover Texts or Back-Cover Texts.  A copy of the license is
+included in the section entitled ``GNU Free Documentation License''.
+@end quotation
+@end copying
+
+@dircategory Emacs
+@direntry
+* Dash: (dash.info).    A modern list library for GNU Emacs.
+@end direntry
+
+@titlepage
+@title Dash Manual
+@subtitle For Dash Version @value{DASHVER}.
+@author Magnar Sveen
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top
+@top Dash
+
+@insertcopying
+@end ifnottex
+
+@menu
+* Installation::        Installing and configuring Dash.
+* Functions::           Dash API reference.
+* Development::         Contributing to Dash development.
+
+Appendices
+
+* FDL::                 The license for this documentation.
+* GPL::                 Conditions for copying and changing Dash.
+* Index::               Index including functions and macros.
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Installation
+
+* Using in a package::  Listing Dash as a package dependency.
+* Fontification of special variables::  Font Lock of anaphoric macro variables.
+* Info symbol lookup::  Looking up Dash symbols in this manual.
+
+Functions
+
+@c [[ function-list ]]
+
+Development
+
+* Contribute::          How to contribute.
+* Contributors::        List of contributors.
+@end detailmenu
+@end menu
+
+@node Installation
+@chapter Installation
+
+Dash is available on @url{https://elpa.gnu.org/, GNU ELPA},
+@url{https://elpa.gnu.org/devel/, GNU-devel ELPA}, and
+@url{https://melpa.org/, MELPA}, and can be installed with the
+standard command @code{package-install} (@pxref{Package
+Installation,,, emacs, The GNU Emacs Manual}).
+
+@table @kbd
+@item M-x package-install @key{RET} dash @key{RET}
+Install the Dash library.
+@end table
+
+Alternatively, you can just dump @file{dash.el} in your
+@code{load-path} somewhere (@pxref{Lisp Libraries,,, emacs, The GNU
+Emacs Manual}).
+
+@menu
+* Using in a package::  Listing Dash as a package dependency.
+* Fontification of special variables::  Font Lock of anaphoric macro variables.
+* Info symbol lookup::  Looking up Dash symbols in this manual.
+@end menu
+
+@node Using in a package
+@section Using in a package
+
+If you use Dash in your own package, be sure to list it as a
+dependency in the library's headers as follows (@pxref{Library
+Headers,,, elisp, The Emacs Lisp Reference Manual}).
+
+@lisp
+;; Package-Requires: ((dash "@value{DASHVER}"))
+@end lisp
+
+@node Fontification of special variables
+@section Fontification of special variables
+
+@findex dash-fontify-mode
+The autoloaded minor mode @code{dash-fontify-mode} is provided for
+optional fontification of anaphoric Dash variables (@code{it},
+@code{acc}, etc.@:) in Emacs Lisp buffers using search-based Font Lock
+(@pxref{Font Lock,,, emacs, The GNU Emacs Manual}).  In older Emacs
+versions which do not dynamically detect macros, the minor mode also
+fontifies calls to Dash macros.
+
+@findex global-dash-fontify-mode
+To automatically enable the minor mode in all Emacs Lisp buffers, just
+call its autoloaded global counterpart
+@code{global-dash-fontify-mode}, either interactively or from your
+@code{user-init-file}:
+
+@lisp
+(global-dash-fontify-mode)
+@end lisp
+
+@node Info symbol lookup
+@section Info symbol lookup
+
+@findex dash-register-info-lookup
+While editing Elisp files, you can use @kbd{C-h S}
+(@code{info-lookup-symbol}) to look up Elisp symbols in the relevant
+Info manuals (@pxref{Info Lookup,,, emacs, The GNU Emacs Manual}).  To
+enable the same for Dash symbols, use the command
+@code{dash-register-info-lookup}.  It can be called directly when
+needed, or automatically from your @code{user-init-file}.  For
+example:
+
+@lisp
+(with-eval-after-load 'info-look
+  (dash-register-info-lookup))
+@end lisp
+
+@node Functions
+@chapter Functions
+
+This chapter contains reference documentation for the Dash
+@acronym{API, Application Programming Interface}.  The names of all
+public functions defined in the library are prefixed with a dash
+character (@samp{-}).
+
+The library also provides anaphoric macro versions of functions where
+that makes sense.  The names of these macros are prefixed with two
+dashes (@samp{--}) instead of one.
+
+For instance, while the function @code{-map} applies a function to
+each element of a list, its anaphoric counterpart @code{--map}
+evaluates a form with the local variable @code{it} temporarily bound
+to the current list element instead.
+
+@lisp
+@group
+;; Normal version.
+(-map (lambda (n) (* n n)) '(1 2 3 4))
+    @result{} (1 4 9 16)
+@end group
+
+@group
+;; Anaphoric version.
+(--map (* it it) '(1 2 3 4))
+    @result{} (1 4 9 16)
+@end group
+@end lisp
+
+The normal version can, of course, also be written as in the following
+example, which demonstrates the utility of both versions.
+
+@lisp
+@group
+(defun my-square (n)
+  "Return N multiplied by itself."
+  (* n n))
+
+(-map #'my-square '(1 2 3 4))
+    @result{} (1 4 9 16)
+@end group
+@end lisp
+
+@menu
+@c [[ function-list ]]
+@end menu
+
+@c [[ function-docs ]]
+@node Development
+@chapter Development
+
+The Dash repository is hosted on GitHub at
+@url{https://github.com/magnars/dash.el}.
+
+@menu
+* Contribute::          How to contribute.
+* Contributors::        List of contributors.
+@end menu
+
+@node Contribute
+@section Contribute
+
+Yes, please do.  Pure functions in the list manipulation realm only,
+please.  There's a suite of examples/tests in @file{dev/examples.el},
+so remember to add tests for your additions, or they may get broken
+later.
+
+Run the tests with @samp{make check}.  Regenerate the docs with
+@samp{make docs}.  Contributors are encouraged to install these
+commands as a Git pre-commit hook, so that the tests are always
+running and the docs are always in sync:
+
+@example
+$ cp dev/pre-commit.sh .git/hooks/pre-commit
+@end example
+
+Oh, and don't edit @file{README.md} or @file{dash.texi} directly, as
+they are auto-generated.  Instead, change their respective templates
+@file{readme-template.md} or @file{dash-template.texi}.
+
+To ensure that Dash can be distributed with GNU ELPA or Emacs, we
+require that all contributors assign copyright to the Free Software
+Foundation.  For more on this, @pxref{Copyright Assignment,,, emacs,
+The GNU Emacs Manual}.
+
+@node Contributors
+@section Contributors
+
+@itemize
+@item
+@url{https://github.com/Fuco1, Matus Goljer} contributed lots of
+features and functions.
+@item
+@url{https://github.com/tkf, Takafumi Arakaki} contributed
+@code{-group-by}.
+@item
+@url{https://github.com/tali713, tali713} is the author of
+@code{-applify}.
+@item
+@url{https://github.com/vemv, V@'{i}ctor M. Valenzuela} contributed
+@code{-repeat}.
+@item
+@url{https://github.com/nicferrier, Nic Ferrier} contributed
+@code{-cons*}.
+@item
+@url{https://github.com/Wilfred, Wilfred Hughes} contributed
+@code{-slice}, @code{-first-item}, and @code{-last-item}.
+@item
+@url{https://github.com/shosti, Emanuel Evans} contributed
+@code{-if-let}, @code{-when-let}, and @code{-insert-at}.
+@item
+@url{https://github.com/rejeep, Johan Andersson} contributed
+@code{-sum}, @code{-product}, and @code{-same-items?}.
+@item
+@url{https://github.com/kurisuwhyte, Christina Whyte} contributed
+@code{-compose}.
+@item
+@url{https://github.com/steventlamb, Steve Lamb} contributed
+@code{-cycle}, @code{-pad}, @code{-annotate}, @code{-zip-fill}, and a
+variadic version of @code{-zip}.
+@item
+@url{https://github.com/fbergroth, Fredrik Bergroth} made the
+@code{-if-let} family use @code{-let} destructuring and improved the
+script for generating documentation.
+@item
+@url{https://github.com/holomorph, Mark Oteiza} contributed
+@code{-iota} and the script to create an Info manual.
+@item
+@url{https://github.com/wasamasa, Vasilij Schneidermann} contributed
+@code{-some}.
+@item
+@url{https://github.com/occidens, William West} made @code{-fixfn}
+more robust at handling floats.
+@item
+@url{https://github.com/camsaul, Cam Saul} contributed @code{-some->},
+@code{-some->>}, and @code{-some-->}.
+@item
+@url{https://github.com/basil-conto, Basil L. Contovounesios}
+contributed @code{-common-prefix}, @code{-common-suffix}, and various
+other improvements.
+@item
+@url{https://github.com/doublep, Paul Pogonyshev} contributed
+@code{-each-r} and @code{-each-r-while}.
+@end itemize
+
+Thanks!
+
+New contributors are very welcome.  @xref{Contribute}.
+
+@c Appendices.
+
+@node FDL
+@appendix GNU Free Documentation License
+@include doc/fdl.texi
+
+@node GPL
+@appendix GNU General Public License
+@include doc/gpl.texi
+
+@node Index
+@unnumbered Index
+@printindex fn
+
+@bye
