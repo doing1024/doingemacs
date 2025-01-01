@@ -1,4 +1,4 @@
-<img src="logo.png" align="left" width="192px" height="192px"/>
+<img src="logo.png" align="left" width="400px" height="244px"/>
 <img align="left" width="0" height="192px" hspace="10"/>
 
 > DoingEmacs是一款Emacs配置，体积轻便，速度快速，维护方便。
