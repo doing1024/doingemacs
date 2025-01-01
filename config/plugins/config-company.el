@@ -1,4 +1,5 @@
 (use-package company
+  :if doingemacs-language-complete-plugin-use-eglot
  :load-path "site-lisp/company-mode"
  :defer 2
  :config

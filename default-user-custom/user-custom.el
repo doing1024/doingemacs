@@ -20,7 +20,8 @@
   (setq doingemacs-enable-flycheck t)
   (setq doingemacs-enable-multiple-cursors t)
   (setq doingemacs-enable-language-complete t)
-  (setq doingemacs-language-need-complete (list 'c-mode-hook 'c++-mode-hook 'css-mode-hook 'html-mode-hook 'mhtml-mode-hook 'js-mode-hook 'python-mode-hook 'sh-mode-hook))
+  (setq doingemacs-language-complete-plugin-use-eglot t) ;use "eglot" or "lsp-bridge"
+  (setq doingemacs-eglot-language-need-complete (list 'c-mode-hook 'c++-mode-hook 'css-mode-hook 'html-mode-hook 'mhtml-mode-hook 'js-mode-hook 'python-mode-hook 'sh-mode-hook))
   (setq doingemacs-enable-eaf t)
   (setq doingemacs-enable-translate t))
 (defun user/run-before-init ()

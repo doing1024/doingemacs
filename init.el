@@ -6,6 +6,7 @@
 
 
 ;;; Code:
+(setq byte-compile-warnings '(cl-functions)) ; 解决Package cl is deprecated问题
 (setq gc-cons-threshold (* 40 1000 1000))
 (setq doingemacs-version "doingemacs 0.0.5")
 (setq doingemacs-already-startup nil)

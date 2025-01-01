@@ -92,9 +92,11 @@ Emacs 本身是不推荐也没有默认支持文件树的，但是出于对年�
 | C-M-enter | 关闭当前buffer和tab |
 
 ### 多光标
+
 为Doingemacs提供多光标支持。本功能不建议关闭。
 
 #### 快捷键
+
 选中多行后`M-d m l`在每行当前位置新建光标。
 
 选中内容后`M-d m w`为所有匹配的内容添加光标。
@@ -103,17 +105,33 @@ Emacs 本身是不推荐也没有默认支持文件树的，但是出于对年�
 
 ### 代码补全
 
-基于语法的代码补全，使用Lsp，建议打开，若实在需要关闭将doingemacs-language-complete设为nil。
+基于语法的代码补全，使用Lsp，若需要关闭将doingemacs-language-complete设为nil。
 
+DoingEmacs可以使用两种插件中的一个：Eglot（Emacs 28+以上自带，在部分机器上性能较慢，DoingEmacs默认选项）或Lsp-bridge（需要Python,使用多线程，在部分机器上性能较快）.
+
+切换：设置 `doingemacs-languge-complete-use-eglot`为是（t）否(nil)使用Eglot的选项.
 设置需要启用的模式：修改doingemacs-language-need-complete中的mode-hook.
+
+#### 使用Eglot
 
 在打开一个新的语言的文件时，插件会提醒您是否需要安装相关的补全后端，请您进行确认。
 
-#### 按键绑定
+##### 按键绑定
+
 `M-d l o`手动打开代码补全
 `M-d l r`重命名符号
 
+#### 使用Lsp-bridge
+
+补全会自动开启，无需手动调控。第一次使用时需要使用`M-x doingemacs-init-lsp-bridge`安装依赖（需要手动安装Python）.需要将`pip3`加入环境变量。
+
+##### 按键绑定
+
+`M-d l r`重命名符号
+
+
 ### EAF
+
 EAF是一个Emacs的插件，可以在Emacs中使用浏览器、PDF阅读器、视频播放器等功能。Doingemacs中内置对Eaf的支持，默认没有开启任何功能，请您自行开启。如果需要关闭Eaf，请将doingemacs-enable-eaf设为nil。
 
 如果需要开启Eaf功能，请在`user/run-after-init`函数中添加对应的require语句，并且在Doingemacs中按下`M-d e i`进行安装，选择自己需要的包。
@@ -122,8 +140,8 @@ EAF是一个Emacs的插件，可以在Emacs中使用浏览器、PDF阅读器、�
 
 Doingemacs内置了翻译功能，使用`M-d t e`并输入内容翻译为英文，`M-d t c`翻译为中文。
 
-
 ## 自定制
+
 当您想要自定义 DoingEmacs时，您可以在`user/run-after-init`和`user/run-after-init`函数中添加自己的配置。
 
-如果您需要安装插件，请您将插件克隆到`site-lisp`文件夹中，并在`user/run-after-init`函数中添加对应的require语句（Doingemacs 会自动为您添加load-path,这点无需担心）。
+如果您需要安装插件，请您将插件克隆到`user-site-lisp`文件夹中，并在`user/run-after-init`函数中添加对应的require语句（Doingemacs 会自动为您添加load-path,这点无需担心）。
