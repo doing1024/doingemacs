@@ -25,7 +25,7 @@
 (defun user/run-before-init ()
   ;;; any thing you want it to run before load any doingemacs config
   ;;; warning: don't delete this function,it'll make error when doingemacs startup
-
+  (setq easy-hugo-basedir "/run/media/doing/Files/Blog/")
   )
 (defun user/run-after-init ()
   ;;; any thing you want it to run after load any doingemacs config
