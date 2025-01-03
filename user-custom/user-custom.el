@@ -19,7 +19,7 @@
   (setq doingemacs-enable-tab t)
   (setq doingemacs-enable-multiple-cursors t)
   (setq doingemacs-enable-language-complete t)
-  (setq doingemacs-language-complete-plugin-use-eglot nil)
+  (setq doingemacs-language-complete-use-eglot nil)
   (setq doingemacs-eglot-language-need-complete (list 'c-mode-hook 'c++-mode-hook 'css-mode-hook 'html-mode-hook 'mhtml-mode-hook 'js-mode-hook 'python-mode-hook 'sh-mode-hook))
   (setq doingemacs-enable-eaf t)
   (setq doingemacs-enable-translate t))
@@ -32,6 +32,9 @@
   ;;; any thing you want it to run after load any doingemacs config
   ;;; warning: don't delete this function,it'll make error when doingemacs startup
 					; (message "Doingemacs Startup!")
+  (use-package atomic-chrome
+    :ensure t
+    :config (atomic-chrome-start-server))
   )
 (provide 'user-custom)
 ;;; user-custom.el ends here

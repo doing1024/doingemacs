@@ -10,14 +10,14 @@
   :load-path "site-lisp/yasnippet/"
   :hook (prog-mode . yas-minor-mode)
   )
-(if (doingemacs-language-complete-plugin-use-eglot) (use-package lsp-bridge
+(if (not doingemacs-language-complete-use-eglot) (use-package lsp-bridge
 						      :init (setq lsp-bridge-python-lsp-server "pyright")
 						      :load-path "site-lisp/lsp-bridge/"
 						      :after (yasnippet)
 						      :bind
-						      ("M-d l r" lsp-bridge-rename)
-						      :config
-						      (global-lsp-bridge-mode)
+						      ("M-d l r" . lsp-bridge-rename)
+						      :hook
+						      (prog-mode . lsp-bridge-mode)
 						      )
   (progn
     (kb "M-d l o" 'eglot-ensure)

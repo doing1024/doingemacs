@@ -16,14 +16,16 @@
 (defun doing-translate-to-english (str)
   "将输入内容（STR）翻译为英文."
   (interactive "MEnter the text to be translated to English: ")
-  (async-shell-command (format "trans -t en '%s'" str) "*doing-translate*")
+  (shell-command (format "trans -b -t en '%s'" str) "*doing-translate*")
   (switch-to-buffer-other-window "*doing-translate*")
-  (doing-translate-mode 1))
+  (setq doing-translate-context (buffer-string))
+  (kill-buffer-and-window)
+  (kill-new doing-translate-context))
 
 (defun doing-translate-to-chinese (str)
   "将输入内容（STR）翻译为中文."
   (interactive "MEnter the text to be translated to Chinese: ")
-  (async-shell-command (format "trans '%s'" str)  "*doing-translate*")
+  (async-shell-command (format "trans -b '%s'" str)  "*doing-translate*")
   (switch-to-buffer-other-window "*doing-translate*")
   (doing-translate-mode 1))
 (kb "M-d t c" 'doing-translate-to-chinese)
