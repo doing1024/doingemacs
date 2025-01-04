@@ -13,10 +13,14 @@
   :init-value nil)
 
 
-(defun doing-translate-to-english (str)
-  "将输入内容（STR）翻译为英文."
-  (interactive "MEnter the text to be translated to English: ")
-  (shell-command (format "trans -b -t en '%s'" str) "*doing-translate*")
+(defun doing-translate-to-english ()
+  "将输入内容或选中内容翻译为英文.
+如果没有选中内容，则提示输入要翻译的文本."
+  (interactive)
+  (if (use-region-p)
+        (setq tmp (buffer-substring-no-properties (region-beginning) (region-end)))
+      (setq tmp (read-string "Enter the text to be translated to English: ")))
+  (shell-command (format "trans -b -t en '%s'" tmp) "*doing-translate*")
   (switch-to-buffer-other-window "*doing-translate*")
   (setq doing-translate-context (buffer-string))
   (kill-buffer-and-window)

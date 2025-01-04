@@ -5,3 +5,6 @@ elpa
 auto-save-list
 .cache
 .mc-lists.el
+user-custom
+user-site-lisp
+.aider*
