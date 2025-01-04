@@ -10,7 +10,7 @@
 * 丰富文档：我们为您准备了简单易懂的文档，无需阅读复杂枯燥的长篇大论。
 
 ## 安装
-1. 克隆本仓库到您的emacs配置位置。
+1. 下载右侧的最新release，解压到您的.emacs.d目录。
 3. 复制default-user-custom文件夹，命名为user-custom。
 4. 启动emacs，由于所有需要的包都附带在DoingEmacs本体中，所以瞬间便可启动。
 
