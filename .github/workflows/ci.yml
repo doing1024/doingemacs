@@ -1,0 +1,49 @@
+name: Auto Release Workflow
+
+on:
+  push:
+    branches:
+      - main  # 可以根据需要修改分支名
+
+jobs:
+  create-release:
+    if: contains(github.event.head_commit.message, '!packing')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive  # 确保检出所有子模块
+          fetch-depth: 0  # 获取完整的git历史
+
+      - name: Get version from commit
+        id: get_version
+        run: |
+          # 从最新的tag获取版本号，如果没有tag则使用v1.0.0
+          VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v1.0.0")
+          # 增加小版本号
+          PARTS=(${VERSION//./ })
+          LAST_PART=${PARTS[2]}
+          LAST_PART=$((LAST_PART+1))
+          NEW_VERSION="${PARTS[0]}.${PARTS[1]}.$LAST_PART"
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create Release ZIP
+        run: |
+          zip -r release.zip . -x "*.git*" # 排除.git文件夹
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.get_version.outputs.version }}
+          name: Release ${{ steps.get_version.outputs.version }}
+          draft: false
+          prerelease: false
+          files: release.zip
+          body: |
+            自动发布版本 ${{ steps.get_version.outputs.version }}
+            触发提交信息: ${{ github.event.head_commit.message }}
