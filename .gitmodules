@@ -1,0 +1,84 @@
+[submodule "site-lisp/auto-save"]
+	path = site-lisp/auto-save
+	url = https://github.com/manateelazycat/auto-save.git
+[submodule "site-lisp/inheritenv"]
+	path = site-lisp/inheritenv
+	url = https://github.com/purcell/inheritenv.git
+[submodule "site-lisp/language-id"]
+	path = site-lisp/language-id
+	url = https://github.com/lassik/emacs-language-id.git
+[submodule "site-lisp/s.el"]
+	path = site-lisp/s.el
+	url = https://github.com/magnars/s.el.git
+[submodule "site-lisp/amx"]
+	path = site-lisp/amx
+	url = https://github.com/emacsmirror/amx.git
+[submodule "site-lisp/company-mode"]
+	path = site-lisp/company-mode
+	url = https://github.com/company-mode/company-mode.git
+[submodule "site-lisp/dash.el"]
+	path = site-lisp/dash.el
+	url = https://github.com/magnars/dash.el.git
+[submodule "site-lisp/emacs-application-framework"]
+	path = site-lisp/emacs-application-framework
+	url = https://github.com/emacs-eaf/emacs-application-framework.git
+[submodule "site-lisp/emacs-dashboard"]
+	path = site-lisp/emacs-dashboard
+	url = https://github.com/emacs-dashboard/emacs-dashboard.git
+[submodule "site-lisp/emacs-which-key"]
+	path = site-lisp/emacs-which-key
+	url = https://github.com/justbur/emacs-which-key.git
+[submodule "site-lisp/format-all"]
+	path = site-lisp/format-all
+	url = https://github.com/lassik/emacs-format-all-the-code.git
+[submodule "site-lisp/goto-line-preview"]
+	path = site-lisp/goto-line-preview
+	url = https://github.com/emacs-vs/goto-line-preview.git
+[submodule "site-lisp/ht.el"]
+	path = site-lisp/ht.el
+	url = https://github.com/Wilfred/ht.el.git
+[submodule "site-lisp/hydra"]
+	path = site-lisp/hydra
+	url = https://github.com/abo-abo/hydra.git
+[submodule "site-lisp/markdown-mode"]
+	path = site-lisp/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode.git
+[submodule "site-lisp/multiple-cursors.el"]
+	path = site-lisp/multiple-cursors.el
+	url = https://github.com/magnars/multiple-cursors.el.git
+[submodule "site-lisp/mwim.el"]
+	path = site-lisp/mwim.el
+	url = https://github.com/alezost/mwim.el.git
+[submodule "site-lisp/org-bullets"]
+	path = site-lisp/org-bullets
+	url = https://github.com/sabof/org-bullets.git
+[submodule "site-lisp/pfuture"]
+	path = site-lisp/pfuture
+	url = https://github.com/Alexander-Miller/pfuture.git
+[submodule "site-lisp/projectile"]
+	path = site-lisp/projectile
+	url = https://github.com/bbatsov/projectile.git
+[submodule "site-lisp/rainbow-delimiters"]
+	path = site-lisp/rainbow-delimiters
+	url = https://github.com/Fanael/rainbow-delimiters.git
+[submodule "site-lisp/sort-tab"]
+	path = site-lisp/sort-tab
+	url = https://github.com/manateelazycat/sort-tab.git
+[submodule "site-lisp/swiper"]
+	path = site-lisp/swiper
+	url = https://github.com/abo-abo/swiper.git
+[submodule "site-lisp/themes"]
+	path = site-lisp/themes
+	url = https://github.com/jonathanchu/atom-one-dark-theme.git
+[submodule "site-lisp/treemacs"]
+	path = site-lisp/treemacs
+	url = https://github.com/Alexander-Miller/treemacs.git
+[submodule "site-lisp/window-numbering.el"]
+	path = site-lisp/window-numbering.el
+	url = https://github.com/nschum/window-numbering.el.git
+[submodule "site-lisp/yasnippet"]
+	path = site-lisp/yasnippet
+	url = https://github.com/joaotavora/yasnippet.git
+[submodule "site-lisp/lsp-bridge"]
+	path = site-lisp/lsp-bridge
+	url = https://github.com/manateelazycat/lsp-bridge.git
