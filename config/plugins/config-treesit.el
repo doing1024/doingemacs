@@ -1,3 +1,8 @@
+;;; config-treesit.el --- doingemacs init file
+;;; Commentary:
+;; There are config about treesit,treesit is built-in at emacs >= 28
+;;; Code:
+
 (setq treesit-language-source-alist
       '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
 	(c . ("https://github.com/tree-sitter/tree-sitter-c"))

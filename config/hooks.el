@@ -1,11 +1,16 @@
-;;; Hooks
-(add-hook 'prog-mode-hook #'show-paren-mode) ; 编程模式下，光标在括号上时高亮另一个括号
-(add-hook 'prog-mode-hook #'flymake-mode)
-;; LSP hooks
-(if (and doingemacs-enable-language-complete doingemacs-language-complete-use-eglot)
-    (progn (dolist (language-hook doingemacs-language-need-complete)
-	     (add-hook language-hook 'eglot-ensure)
+;;; hooks.el --- doingemacs init file
+;;; Commentary:
+;; Doingemascs defined some hooks for Emacs build-in plugins and modes there
+;;; Code:
+
+;; In programming mode, when the cursor is over a parentheses, another parenthesis is highlighted
+(add-hook 'prog-mode-hook #'show-paren-mode)
+
+;; LSP hooks when user use eglot
+(if (and doingemacs-enable-language-complete doingemacs-language-complete-use-eglot) ; If user use eglot
+    (progn (dolist (language-hook doingemacs-eglot-language-need-complete)
+	     (add-hook language-hook 'eglot-ensure) ; add hook when language mode enable
 	     )))
-					
+
 (provide 'hooks)
 ;;; hooks.el ends here

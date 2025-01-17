@@ -1,9 +1,19 @@
+;;; config-sort-tab.el --- doingemacs init file
+;;; Commentary:
+;; There are config about tab bar
+;;; Code:
+
+;; Used to solve the problem of multiple tab bars appearing when running init.el directly
 (if doingemacs-already-startup (sort-tab-turn-off))
+
+;; load
 (use-package sort-tab
   :if doingemacs-enable-tab
   :load-path "site-lisp/sort-tab"
   :config (sort-tab-mode 1)
   )
+
+;; keyboard
 (kb "C-<iso-lefttab>" 'sort-tab-select-prev-tab)
 (kb "C-M-<return>" 'sort-tab-close-current-tab)
 (kb "C-<tab>" 'sort-tab-select-next-tab)
