@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: cpp
+# key: cpp
+# --
+#include<iostream>
+using namespace std;
+int main(){
+  return 0;
+}

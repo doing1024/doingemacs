@@ -1,58 +1,55 @@
-;;; init.el --- 加载完整配置 -*- lexical-binding: t -*-
+;;; init.el --- doingemacs init file
 ;;; Commentary:
-
-;; 这是Emacs的初始化文件，负责加载所有配置
-;; 配置被分散在多个文件中管理
+;; This is the initialization file of Emacs, responsible for loading all configurations
+;; Configuration is managed in multiple files
 
 
 ;;; Code:
-;; 解决Package cl is deprecated警告
+;; Resolve Package cl is deprecated warning
 (setq byte-compile-warnings '(cl-functions))
 
-;; 提高垃圾回收阈值以加快启动速度
+;; Increase garbage collection threshold for faster startup
 (setq gc-cons-threshold (* 40 1000 1000))
 
-;; 设置doingemacs版本号
-(setq doingemacs-version "doingemacs 1.0.0")
+;; Set doingmacs version number
+(setq doingemacs-version "doingemacs 1.1.0")
 
-;; 标记Emacs是否已完成启动
+;; Marks whether Emacs has finished starting,Mainly to prevent multiple sort-tabs from appearing
 (setq doingemacs-already-startup nil)
-;; 添加自定义配置目录到加载路径
+;; Add configuration directory and user configuration to load path
 (add-to-list 'load-path "~/.emacs.d/user-custom")
 (add-to-list 'load-path "~/.emacs.d/config")
 (add-to-list 'load-path "~/.emacs.d/config/plugins")
 
-;; 添加第三方库目录到加载路径
-(add-to-list 'load-path "~/.emacs.d/site-lisp/inheritenv")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/s.el")
-(add-to-list 'load-path "~/.emacs.d/site-lisp/language-id")
-
-;; 加载用户自定义配置
+;; Load user-defined configuration
 (require 'user-custom)
 
-;; 执行初始化前的自定义操作
+;; Perform custom operations before initialization
 (user/run-before-init)
 
-;; 加载用户配置
+;; Load user configuration
 (user/config)
 
-;; 加载基础配置
+;; Load basic config
 (require 'basic)
+;; Load keymap without plugins
 (require 'keys)
+;; Load hooks without plugins
 (require 'hooks)
+;; Load plugins
 (require 'plugin)
 
-;; 加载自定义变量设置
+;; Load custom variable settings and beautify the main file
 (setq custom-file "~/.emacs.d/config/custom-set-var.el")
 (load custom-file)
 
-;; 执行初始化后的自定义操作
+;; Perform custom operations after initialization
 (user/run-after-init)
 
-;; 标记Emacs已完成启动
+;; Mark Emacs as having finished starting
 (setq doingemacs-already-startup t)
 
-;; 恢复垃圾回收阈值（当前被注释掉）
+;; Restore garbage collection threshold
 (setq gc-cons-threshold (* 2 1000 1000))
 (provide 'init)
 ;;; init.el ends here
