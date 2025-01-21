@@ -12,7 +12,7 @@
 (setq gc-cons-threshold (* 40 1000 1000))
 
 ;; Set doingmacs version number
-(setq doingemacs-version "doingemacs 1.1.0")
+(setq doingemacs-version "doingemacs 1.0.1")
 
 ;; Marks whether Emacs has finished starting,Mainly to prevent multiple sort-tabs from appearing
 (setq doingemacs-already-startup nil)
