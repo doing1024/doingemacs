@@ -70,9 +70,6 @@
 [submodule "site-lisp/swiper"]
 	path = site-lisp/swiper
 	url = https://github.com/abo-abo/swiper.git
-[submodule "site-lisp/themes"]
-	path = site-lisp/themes
-	url = https://github.com/jonathanchu/atom-one-dark-theme.git
 [submodule "site-lisp/treemacs"]
 	path = site-lisp/treemacs
 	url = https://github.com/Alexander-Miller/treemacs.git
