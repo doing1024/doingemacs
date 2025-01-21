@@ -1,6 +1,9 @@
 (use-package treemacs
   :if doingemacs-enable-treemacs
   :load-path "site-lisp/treemacs/src/elisp"
+  :config
+  (setq treemacs-indentation 1)
+  (setq treemacs-width 20)
   :bind
   ("M-d f t" . treemacs)
   ("C-x t 1"  . treemacs-delete-other-windows)

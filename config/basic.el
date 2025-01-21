@@ -19,9 +19,6 @@
 ;; Disable menu bar
 (menu-bar-mode -1)
 
-;; Show line numbers in all files
-(global-display-line-numbers-mode)
-
 ;; Set emacs proxy
 (if doingemacs-enable-proxy
     (progn (setq my-http-proxy (format "%s:%d" doingemacs-proxy-host doingemacs-proxy-port))

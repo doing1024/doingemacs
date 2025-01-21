@@ -60,14 +60,6 @@ Emacs 本身是不推荐也没有默认支持文件树的，但是出于对年�
 开启方式：将`doingemacs-enable-treemacs`设为 t。
 使用方法：按键`M-d f t`，使用`M-x treemacs-add-project`添加项目
 
-### Ai 编程助手
-
-由于近日(2024.12)Github Copilot 的免费，Doingemacs 使用 Github Copilot 作为 Ai 编程助手。
-`doingemacs-enable-copilot`设置助手是否可用（默认为 t）
-`doingemacs-enable-copilot-default`设置助手是否默认开启（默认为 nil）
-在文件中按`M-d l c`切换助手打开/关闭（仅作用于当前文件）
-初始需要`M-x copilot-login`登陆 github。
-
 ### 自动保存
 
 如果您曾有一段使用 Emacs 的经历，您也许会对 Emacs 默认的自动保存`#file#`感到厌烦。本功能可以禁用默认的自动保存，并且实现“真正的”自动保存（当手头停下 1s 时自动保存到源文件）。
@@ -127,18 +119,24 @@ DoingEmacs可以使用两种插件中的一个：Eglot（Emacs 28+以上自带�
 
 ##### 按键绑定
 
-`M-d l r`重命名符号
-
+`M-d l r` 重命名符号
+`M-d l p` lsp-bridge-peek,具体见[Lsp-bridge官方Wiki](https://github.com/manateelazycat/lsp-bridge/wiki/Peek-%5B%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E7%89%88%5D)
 
 ### EAF
 
 EAF是一个Emacs的插件，可以在Emacs中使用浏览器、PDF阅读器、视频播放器等功能。Doingemacs中内置对Eaf的支持，默认没有开启任何功能，请您自行开启。如果需要关闭Eaf，请将doingemacs-enable-eaf设为nil。
 
-如果需要开启Eaf功能，请在`user/run-after-init`函数中添加对应的require语句，并且在Doingemacs中按下`M-d e i`进行安装，选择自己需要的包。
+如果需要开启Eaf功能，请在`doingemacs-eaf-plugins`中添加相应插件名称，如`eaf-browser`，并且在Doingemacs中按下`M-d e i`进行安装，选择自己需要的包。
 
 ### 翻译
 
 Doingemacs内置了翻译功能，使用`M-d t e`并输入内容翻译为英文，`M-d t c`翻译为中文。
+
+稍有不同的是，英文自动复制到剪贴板，而中文则弹窗显示。
+
+### AI
+
+Doingemacs内置aider支持，默认未开启，请将`doingemacs-enable-aider`设为t,并填写doingemacs-aider开头的变量，这其中包括了您使用的AI的Apikey（除非您使用ollama）。如果您需要将其二次发布，请您自行对其进行处理。Doingemacs不对您的Apikey泄漏负任何责任。
 
 ## 自定制
 

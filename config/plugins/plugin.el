@@ -46,10 +46,14 @@
 
 ;; Language complete
 (if doingemacs-enable-language-complete (progn (if doingemacs-language-complete-use-eglot (require 'config-company))
-					       (require 'config-lsp)))
+																							 (require 'config-lsp)))
 
 ;; Translate,need crow installed
 (require 'doing-translate)
+
+;; Aider support
+
+(require 'config-aider)
 
 ;; Eaf support
 (if doingemacs-enable-eaf (require 'config-eaf))
