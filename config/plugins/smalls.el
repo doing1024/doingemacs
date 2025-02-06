@@ -4,8 +4,7 @@
 ;;; Code:
 
 ;; Themes
-(add-to-list 'custom-theme-load-path doingemacs-theme-load-path t)
-(if doingemacs-enable-random-switch-theme-when-startup (load-theme (nth (random (length doingemacs-random-themes)) doingemacs-random-themes) t) (load-theme doingemacs-theme t))
+ (load-theme doingemacs-theme t)
 
 
 ;; Mwim rebinds C-a and C-e

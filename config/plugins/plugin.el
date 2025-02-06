@@ -32,9 +32,6 @@
 ;; Beautify Org Mode
 (require 'config-org-mode)
 
-;; File Tree
-(require 'config-treemacs)
-
 ;; Used to override Emacs' default auto-save
 (require 'config-auto-save)
 
@@ -55,7 +52,5 @@
 
 (require 'config-aider)
 
-;; Eaf support
-(if doingemacs-enable-eaf (require 'config-eaf))
 (provide 'plugin)
 ;;; plugin.el ends here

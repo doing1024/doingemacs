@@ -22,20 +22,26 @@
 ;; Set emacs proxy
 (if doingemacs-enable-proxy
     (progn (setq my-http-proxy (format "%s:%d" doingemacs-proxy-host doingemacs-proxy-port))
-	   (setq my-socks-proxy (format "%s:%d" doingemacs-proxy-host doingemacs-proxy-port))
-	   ))
+					 (setq my-socks-proxy (format "%s:%d" doingemacs-proxy-host doingemacs-proxy-port))
+					 (if doingemacs-enable-eaf (progn (setq eaf-proxy-type "http")
+																						(setq eaf-proxy-host doingemacs-proxy-host)
+																						(setq eaf-proxy-port doingemacs-proxy-host))))
+	)
 
 ;; Change yes/no to y/n
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(defun set-font (english chinese english-size chinese-size)
+	(set-face-attribute 'default nil :font
+											;; (format   "%s:pixelsize=%d"  english english-size) :weight 'semi-bold)
+											(format   "%s:pixelsize=%d"  english english-size))
+
+	(dolist (charset '(kana han symbol cjk-misc bopomofo))
+		(set-fontset-font (frame-parameter nil 'font) charset
+											(font-spec :family chinese :size chinese-size))))
+
 ;; Set emacs font
-(if doingemacs-enable-custom-font (progn (set-frame-font doingemacs-default-font)
-					 (dolist (charset '(han kana symbol cjk-misc bopomofo))
-					   (set-fontset-font (frame-parameter nil 'font)
-							     charset
-							     (font-spec :family doingemacs-cjk-font)
-							     ))
-					 ))
+(if doingemacs-enable-custom-font (set-font doingemacs-default-font doingemacs-cjk-font doingemacs-default-font-size doingemacs-cjk-font-size))
 
 ;; Tell user what doingemacs they use,for easier debug
 (defun what-the-doingemacs-version-i-use ()

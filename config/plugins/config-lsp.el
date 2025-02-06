@@ -16,6 +16,7 @@
       :bind
       ("M-d l r" . lsp-bridge-rename)
       ("M-d l p" . lsp-bridge-peek)
+			("M-d l t" . lsp-bridge-peek-through)
       :hook
       (prog-mode . lsp-bridge-mode)
       )

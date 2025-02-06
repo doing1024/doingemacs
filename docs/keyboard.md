@@ -11,9 +11,6 @@
 | M-d c c    | 注释/反注释当前区域                                                    | (C)ode代码 (C)omment注释                     |
 | M-d c f    | 在当前项目内查找文件内容                                               | (C)ode代码 (F)ind查找                        |
 | M-d c s    | 按字典序排序选中行                                                     | (C)ode代码 (S)ort排序                        |
-| M-d e      | EAF按键组（用户安装其他EAF插件后也可以绑定在该组）                     | (E)af                                        |
-| M-d e i    | 安装新的Eaf插件（Doingemacs只负责安装，不负责require和配置）           | (E)af (I)nstall安装                          |
-| M-d e o    | 使用EAF打开                                                            | (E)af (O)pen打开                             |
 | M-d f      | 文件按键组（侧重于文件本体而非文件内容）                               | (F)ile文件                                   |
 | M-d f f    | 在当前项目内查找文件名                                                 | (F)ile文件 (F)ind查找                        |
 | M-d f l    | 跳转到行                                                               | (F)ile文件 （L）ine行                        |

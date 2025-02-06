@@ -15,8 +15,8 @@ Doingemacs 的基本配置均在`user/config`函数中。
 
 1. 将`doingemacs-enable-custom-font`设为 t
 2. 取消第 5、6 行的注释
-3. 将`doingemacs-default-font`设为您的英文字体。
-4. 将`doingemacs-default-cjk-font`设为您的中文字体。
+3. 将`doingemacs-default-font`设为您的英文字体，并修改`doingemacs-default-font-size`为您的字体大小。
+4. 将`doingemacs-default-cjk-font`设为您的中文字体，并修改`doingemacs-cjk-font-size`为您的字体大小。
 
 ### 代理
 
@@ -121,12 +121,6 @@ DoingEmacs可以使用两种插件中的一个：Eglot（Emacs 28+以上自带�
 
 `M-d l r` 重命名符号
 `M-d l p` lsp-bridge-peek,具体见[Lsp-bridge官方Wiki](https://github.com/manateelazycat/lsp-bridge/wiki/Peek-%5B%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E7%89%88%5D)
-
-### EAF
-
-EAF是一个Emacs的插件，可以在Emacs中使用浏览器、PDF阅读器、视频播放器等功能。Doingemacs中内置对Eaf的支持，默认没有开启任何功能，请您自行开启。如果需要关闭Eaf，请将doingemacs-enable-eaf设为nil。
-
-如果需要开启Eaf功能，请在`doingemacs-eaf-plugins`中添加相应插件名称，如`eaf-browser`，并且在Doingemacs中按下`M-d e i`进行安装，选择自己需要的包。
 
 ### 翻译
 

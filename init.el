@@ -9,10 +9,10 @@
 (setq byte-compile-warnings '(cl-functions))
 
 ;; Increase garbage collection threshold for faster startup
-(setq gc-cons-threshold (* 40 1000 1000))
+(setq gc-cons-threshold (* 50 1024 1024))
 
 ;; Set doingmacs version number
-(setq doingemacs-version "doingemacs 1.0.1")
+(setq doingemacs-version "doingemacs 1.1.0")
 
 ;; Marks whether Emacs has finished starting,Mainly to prevent multiple sort-tabs from appearing
 (setq doingemacs-already-startup nil)
@@ -50,6 +50,6 @@
 (setq doingemacs-already-startup t)
 
 ;; Restore garbage collection threshold
-(setq gc-cons-threshold (* 2 1000 1000))
+; (setq gc-cons-threshold (* 2 1000 1000))
 (provide 'init)
 ;;; init.el ends here

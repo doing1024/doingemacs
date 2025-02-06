@@ -8,6 +8,7 @@
   :defer 1
   :load-path "site-lisp/swiper"
   :config
+	(setq ivy-use-selectable-prompt t)
   (counsel-mode 1)
   :bind
   (("C-x C-@" . 'counsel-mark-ring)

@@ -7,9 +7,6 @@
 [submodule "site-lisp/dash.el"]
 	path = site-lisp/dash.el
 	url = https://github.com/magnars/dash.el.git
-[submodule "site-lisp/emacs-application-framework"]
-	path = site-lisp/emacs-application-framework
-	url = https://github.com/emacs-eaf/emacs-application-framework.git
 [submodule "site-lisp/emacs-dashboard"]
 	path = site-lisp/emacs-dashboard
 	url = https://github.com/emacs-dashboard/emacs-dashboard.git
@@ -70,9 +67,6 @@
 [submodule "site-lisp/swiper"]
 	path = site-lisp/swiper
 	url = https://github.com/abo-abo/swiper.git
-[submodule "site-lisp/treemacs"]
-	path = site-lisp/treemacs
-	url = https://github.com/Alexander-Miller/treemacs.git
 [submodule "site-lisp/window-numbering.el"]
 	path = site-lisp/window-numbering.el
 	url = https://github.com/nschum/window-numbering.el.git
