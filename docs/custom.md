@@ -33,13 +33,8 @@ Doingemacs 内置了许多实用插件，如果您需要，您可以自行开关
 
 ### 主题
 
-#### 固定主题
+如果您希望使用自定义主题，那么请您设置`doingemacs-theme`为您想要的主题并单独下载它。
 
-如果您希望使用固定的某个主题，那么请您设置`doingemacs-theme`为您想要的主题并单独下载它。
-
-#### 随机主题
-
-如果您希望每次打开 Emacs 都在特定几个主题中随机选择，那么请您设`doingemacs-enable-random-switch-theme-when-startup`为 t,并修改第 12 行。
 
 ### 开头结尾
 
@@ -54,12 +49,6 @@ Doingemacs 内置了许多实用插件，如果您需要，您可以自行开关
 修改 Logo：请将 doingemacs-dashboard-logo 设为您的 logo 路径。
 修改标题：请将 doingemacs-dashboard-title 设为您的标题。
 
-### 文件树
-
-Emacs 本身是不推荐也没有默认支持文件树的，但是出于对年轻用户需求的考虑，Doingemacs 内置了文件树的支持，但是默认没有开启。
-开启方式：将`doingemacs-enable-treemacs`设为 t。
-使用方法：按键`M-d f t`，使用`M-x treemacs-add-project`添加项目
-
 ### 自动保存
 
 如果您曾有一段使用 Emacs 的经历，您也许会对 Emacs 默认的自动保存`#file#`感到厌烦。本功能可以禁用默认的自动保存，并且实现“真正的”自动保存（当手头停下 1s 时自动保存到源文件）。
@@ -72,7 +61,6 @@ Emacs 本身是不推荐也没有默认支持文件树的，但是出于对年�
 
 本功能默认开启，如需关闭，请将doingemacs-enable-tab设为nil.
 
-本功能使用的是
 
 #### 快捷键
 

@@ -79,3 +79,6 @@
 [submodule "site-lisp/aider.el"]
 	path = site-lisp/aider.el
 	url = https://github.com/tninja/aider.el.git
+[submodule "site-lisp/dirvish"]
+	path = site-lisp/dirvish
+	url = https://github.com/alexluigit/dirvish.git

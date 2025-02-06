@@ -14,7 +14,7 @@
 | M-d f      | 文件按键组（侧重于文件本体而非文件内容）                               | (F)ile文件                                   |
 | M-d f f    | 在当前项目内查找文件名                                                 | (F)ile文件 (F)ind查找                        |
 | M-d f l    | 跳转到行                                                               | (F)ile文件 （L）ine行                        |
-| M-d f t    | 打开文件树                                                             | (F)ile文件 (T)ree树                          |
+| M-d f t    | 打开Dirvish文件树                                                      | (F)ile文件 (T)ree树                          |
 | M-d f d    | 配置文件按键组                                                         | (F)ile文件 (D)ot File点文件，即配置文件      |
 | M-d f d o  | 打开用户配置文件                                                       | (F)ile文件 (D)ot File点文件 (O)pen打开       |
 | M-d f d r  | 运行当前配置文件（仅能针对代码配置文件，在用户配置文件运行该命令无效） | (F)ile文件 (D)ot File点文件 (R)un运行        |

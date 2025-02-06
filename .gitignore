@@ -11,3 +11,4 @@ user-site-lisp
 data
 config/custom-set-var.el
 session*
+transient

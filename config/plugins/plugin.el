@@ -52,5 +52,8 @@
 
 (require 'config-aider)
 
+;; Dirvish support
+(require 'config-dirvish)
+
 (provide 'plugin)
 ;;; plugin.el ends here
